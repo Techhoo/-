@@ -1,0 +1,63 @@
+1.行内元素,块元素, 替换元素非替换元素的区别?
+	https://www.cnblogs.com/me2o/p/12053811.html
+
+2.img的title和alt的区别?
+	主要需要提到alt对seo影响
+
+3.meta标签
+	设置网页元信息 	tdk,charset,移动端适配
+4.DOCTYPE标签
+	作用:告知浏览器的解析器用什么文档标准解析这个文档 . DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现
+	主要是讲讲写了和不写的区别,你及h5文档申明和h4文档申明区别.这里涉及到了怪异盒模型和标准盒模型
+	HTML5 不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为
+	SGML的解释 https://blog.csdn.net/weixin_42067279/article/details/87988678
+
+
+5.script标签的defer和async区别 
+	都是异步加载.
+	defer在文档加载和解析完成之后,在DOMContentLoaded之前执行. 执行是按照script标签顺序执行的
+	async在加载完成后,立即执行,此时会阻塞dom渲染,所以async最好不要操作dom,因为它的执行时间不确定.
+因为加载完后立即执行,不能保证多个script按先后顺序执行.
+	直接script引入,加载完后会立即执行,整个过程会阻塞dom解析
+
+
+6.W3C盒模型和IE的怪异盒模型
+	box-sizing
+
+7.水平垂直居中的方法
+	1.flex 
+	2.绝对定位
+	3.table-cell  text-align vertical-align
+
+8.BFC
+	是什么 	   是css的一个特性,一个独立的渲染区域.
+	怎么开启      float  position  overflow  flow-root(重要)
+	有什么用      包含浮动元素   垂直方向外边距重叠问题   相邻上外边距转移问题
+
+
+9.清除浮动的方法
+	1.clear: both , clearfix的本质就是就是用到的clear both
+	2.开启元素的bfc, 主要就是将display:flow-root(不兼容ie)
+	
+10.position属性
+	relative(自身)  absoulte(包含块)  fixed(视口)  staticky(粘滞定位)
+
+11.CSS隐藏元素的方式
+	display:none        触发浏览器的重绘重排   不占为隐藏
+	visibility:hidden    触发重绘 		占位隐藏
+	opacity:0 搭配图层(设置元素的will-change属性,用来为元素开启图层)   不会触发重绘重排
+
+12.Flex布局
+	属性 justifly-content/align-content/       flex-start/flex-end/center/space-between/space-around
+	       align-items  flex-start/flex-end/center/streach
+	       align-self  
+	       flex-growp flex-shirnk flex-direction  flex-basis
+		
+
+13. 双栏布局 三栏布局
+
+14.重排和重绘
+	重绘和重绘都是以图层为最小单元,过多的重绘和重排会影响性能
+	引起重排的场景: 节点的增删改, 移动   窗口的缩放, 字体大小的变化  
+	
+
