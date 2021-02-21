@@ -54,10 +54,102 @@
 	       flex-growp flex-shirnk flex-direction  flex-basis
 		
 
-13. 双栏布局 三栏布局
+13. 双栏布局 三栏布局 等高布局
+	等高布局
+		设置很大的padding,然后设置同样大的负margin,父元素overflow:hidden
+	双栏布局 
+		左侧固定,右侧自适应  
+		右侧固定,左侧自适应
+		
+		方案:1.flex   2.一边浮动,一边设置margin  3.一侧固定,一侧开启bfc. 4.两侧都浮动,一侧使用calc(100%-200px)
+
+	三栏布局  https://www.jianshu.com/p/81ef7e7094e8
+		分是否需要让内容区在结构上排第一
+		flex: 通过grow-up以及order配合
+		圣杯布局
+			名字理解: 🏆 是一个整体,不可分割. 如果布局的html结构  
+			主要是通过负margin:100% 和相对定位
+			<div class="main">
+				<div id="content">内容区</div>
+				<div id="left">左边</div>
+				<div id="right">右边</div>
+			</div>
+			
+			样式
+				1.给main设置padding 0 200   2.content,left,right全浮动,  3.left,right 负margin100%,再设置相对定位
+
+		双飞翼布局
+			名字理解: 就像超人的一对翅膀,可以取消.类似于布局的结构(left和right就相当于结构)	
+			结构
+			<div id="container">
+				<div id="center">center</div>
+			</div>
+			<div id="left">left</div>
+			<div id="right">right</div>
+			样式 1.container,left,right浮动. 2.container宽度100%, 3,center设置左右margin,4,然后left,right 设置负margin移动上去
+					
+		calc
+			结构
+				<div id="center" class="column"></div>
+				<div id="left" class="column"></div>
+				<div id="right" class="column"></div>
+			都浮动,然后width设置calc(100%-400px)	 left,right都设置负margin
+		双飞翼和圣杯布局区别	圣杯布局结构简单明了,但是设置了负margin之后还有再相对定位     双飞翼结构复杂点,但是负margin之后,不用再需要相对定位了
+			
+	
+
 
 14.重排和重绘
-	重绘和重绘都是以图层为最小单元,过多的重绘和重排会影响性能
-	引起重排的场景: 节点的增删改, 移动   窗口的缩放, 字体大小的变化  
+	图层: 和ps的图层类似. 我们看到的网页一般是由多个图层合并而来的. 元素的重绘和重排是基于它所在的图层
+,整个图层都会重新绘制排列.不能具体到单个的元素上.
+	那些操作会为元素生成单独的图层
+		doucment是最大的默认图层
+		transform属性 
+		动画
+		video
+		拥有css加速属性的元素(will-change) **
+
+	重绘和重绘都是以图层为最小单元,过多的重绘和重排会影响性能    
+	引起重绘的场景: 修改元素的表现样式,如背景色,边框颜色,阴影
+	引起重排的场景: 获取元素的某些属性时, 节点的增删改, 移动   窗口的缩放, 字体大小的变化,修改元素的css属性时(宽高,位置啥的) 
+	重排一定会引起重绘,重绘不一定带有重排
+	使用h5做手机游戏就会存在大量的重排,造成手机发热,耗电严重
+
+	优化方案: 尽可能减少重绘重排
+		元素位置移动变化时,尽量使用css3的transform来代替对top left等的操作,transform的改变
+仅仅是影响图层的组合,不会进行重排重绘
+		使用opacity配合图层来代替visibility
+		将多次改变样式的操作合并成一次,dom离线,文档碎片 
+
+
+
+15.css选择器
+	id,类,标签,属性,后代选择器,交集,并集,伪类,通配符,序选择器,
+	优先级
+		important > 行内 > id > class >标签 > 通配符 > 浏览器默认样式表 > 继承
+
+16.css动画和transtion的使用区别
+	1.动画可以一上来就执行,不需要事件触发, 而transition需要属性变化才会有效果
+	2.过渡只有一组(两个: 开始-结束)    关键帧,动画可以设置多个
+
+	
+17. CSS实现三角形
+	div宽度0,  4个边框 都透明 下边框设置颜色 上边框可设置为none
+
+18.CSS 精灵图
+	使用目的: 减少http请求
+
+19. px rem em 
+	rem,em是相对单位
+	rem相对于跟标签的字体大小  1rem等于1跟字体大小
+	1em相对于当前字体大小 
+	
+
+20.伪类和伪元素
+	对元素在某种状态下加类 一种选择器
+	创建一个不存在dom结构的元素
+	
+
+
 	
 
